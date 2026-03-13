@@ -6,8 +6,8 @@
 
 ## 2. Secret hash:
 
-![скрин Secret hash](image.png)
+![скрин Secret hash](Images/image.png)
 
 ## 3. ls-la
 
-![скрин ls-la](image2.png)
+![скрин ls-la](Images/image2.png)
