@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+
+    <h1>Страница: {{ title }}</h1>
+
+    <nav>
+        <a href="/comments">Обычный режим (SAFE)</a> | 
+        <a href="/unsafe">Режим без защиты (UNSAFE)</a>
+    </nav>
+
+    <hr>
+
+    <form action="{% if title == 'UNSAFE' %}/unsafe{% else %}/comments{% endif %}" method="post">
+        <p>Ваше сообщение:</p>
+        <textarea name="comment" rows="5" cols="50" required></textarea>
+        <br>
+        <button type="submit">Отправить в список</button>
+    </form>
+
+    <hr>
+
+    <h2>Все комментарии:</h2>
+    {% for comment in comments %}
+        <div style="border: 1px solid black; margin-bottom: 10px; padding: 5px;">
+            {{ comment | safe }}
+        </div>
+    {% endfor %}
+
+</body>
+</html>

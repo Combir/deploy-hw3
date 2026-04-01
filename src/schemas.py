@@ -1,7 +1,6 @@
 import re
 from pydantic import BaseModel, EmailStr, Field, field_validator, model_validator
 
-
 class UserCreate(BaseModel):
     username: str = Field(
         ...,
@@ -20,16 +19,12 @@ class UserCreate(BaseModel):
     def validate_password_complexity(cls, v: str) -> str:
         if len(v) < 8:
             raise ValueError("Пароль должен содержать минимум 8 символов")
-
         if not re.search(r"[A-Z]", v):
             raise ValueError("Пароль должен содержать хотя бы одну заглавную букву")
-
         if not re.search(r"[0-9]", v):
             raise ValueError("Пароль должен содержать хотя бы одну цифру")
-
         if not re.search(r"[!@#$%^&*]", v):
             raise ValueError("Пароль должен содержать хотя бы один спецсимвол (!@#$%^&*)")
-
         return v
 
     @model_validator(mode="after")
