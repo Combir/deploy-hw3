@@ -8,6 +8,6 @@
 
 ![скрин Secret hash](Images/image.png)
 
-## 3. ls-la
+## 3. ls-la 
 
 ![скрин ls-la](Images/image2.png)
