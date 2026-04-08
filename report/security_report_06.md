@@ -2,16 +2,16 @@
 
 ## 1. Воспроизведение Stored XSS
 
-![alt text](./12.png "XSS")
+![alt text](./Images/12.png "XSS")
 
 ## 2. Фильтрация данных (Bleach)
 
-![alt text](./13.png "Bleach")
+![alt text](./Images/13.png "Bleach")
 
 ## 3. Заголовок Content Security Policy
 
-![alt text](./14.png "CSP")
+![alt text](./Images/14.png "CSP")
 
 ## 4. Блокировка скрипта в консоли
 
-![alt text](./15.png "Block scr.")
+![alt text](./Images/15.png "Block scr.")

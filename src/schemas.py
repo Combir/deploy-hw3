@@ -2,17 +2,12 @@ import re
 from pydantic import BaseModel, EmailStr, Field, field_validator, model_validator
 
 class UserCreate(BaseModel):
-    username: str = Field(
-        ...,
-        pattern=r"^[a-zA-Z0-9]+$",
-        min_length=4,
-        max_length=20,
-        description="Только буквы и цифры, 4–20 символов"
-    )
+    username: str = Field(..., pattern=r"^[a-zA-Z0-9]+$", min_length=4, max_length=20)
     email: EmailStr
     password: str = Field(...)
     confirm_password: str = Field(...)
-    age: int = Field(..., ge=18, le=100, description="Возраст от 18 до 100 лет")
+    age: int = Field(..., ge=18, le=100)
+    role: str = Field(default="user", pattern=r"^(user|admin)$")
 
     @field_validator("password")
     @classmethod
@@ -24,7 +19,7 @@ class UserCreate(BaseModel):
         if not re.search(r"[0-9]", v):
             raise ValueError("Пароль должен содержать хотя бы одну цифру")
         if not re.search(r"[!@#$%^&*]", v):
-            raise ValueError("Пароль должен содержать хотя бы один спецсимвол (!@#$%^&*)")
+            raise ValueError("Пароль должен содержать хотя бы один спецсимвол")
         return v
 
     @model_validator(mode="after")
@@ -32,3 +27,9 @@ class UserCreate(BaseModel):
         if self.password != self.confirm_password:
             raise ValueError("Пароли не совпадают")
         return self
+
+class FileMetadata(BaseModel):
+    id: int
+    name: str
+    size: int
+    owner: str
