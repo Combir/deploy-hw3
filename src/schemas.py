@@ -33,3 +33,7 @@ class FileMetadata(BaseModel):
     name: str
     size: int
     owner: str
+    path: str
+
+    class Config:
+        from_attributes = True

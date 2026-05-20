@@ -8,3 +8,4 @@ bleach==6.3.0
 python-multipart
 starlette[full]==1.0.0
 python-dotenv==1.0.1
+filetype==1.2.0
